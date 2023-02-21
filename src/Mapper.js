@@ -1,4 +1,5 @@
 import {useEffect} from 'react'
+import CharCard from './CharCard'
 
 const Mapper = (props) => {
 
@@ -6,11 +7,17 @@ const Mapper = (props) => {
         console.log('hit')
     }, [props.chars])
 
+    // const charsDisplay = props.chars.map(char => {
+    //   return <CharCard />
+    // })
+
   return (
     <div>
         {props.chars.map(char => {
-          return <p>{char.name}</p>
+          // console.log(char)
+          return <CharCard char={char}/>
         })}
+        {/* {charsDisplay} */}
     </div>
   )
 }

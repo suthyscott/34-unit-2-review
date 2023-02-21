@@ -9,7 +9,7 @@ function App() {
   const fetchChars = () => {
     axios.get('https://swapi.dev/api/people')
       .then((res) => { 
-        console.log(res)
+        // console.log(res)
         setChars(res.data.results)
       })
       .catch(err => console.log(err))
@@ -21,7 +21,7 @@ function App() {
 
 // useEffect(fetchChars, [])
 
- console.log(chars)
+//  console.log(chars)
   return (
     <div className="App">
         <Mapper chars={chars}/>
