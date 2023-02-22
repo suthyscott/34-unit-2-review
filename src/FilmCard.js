@@ -2,7 +2,7 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
 
-const FilmCard = ({filmUrl}) => {
+const FilmCard = ({filmUrl, addNewFilm}) => {
      const [filmInfo, setFilmInfo] = useState([])
 
 
@@ -10,6 +10,7 @@ const FilmCard = ({filmUrl}) => {
         axios.get(filmUrl)
             .then(res => {
                 setFilmInfo(res.data)
+                addNewFilm(res.data)
             })
             .catch(err => console.log(err))
     }

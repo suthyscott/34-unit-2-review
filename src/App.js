@@ -5,6 +5,7 @@ import Mapper from './Mapper';
 
 function App() {
   const [chars, setChars] = useState([])
+  const [favorites, setFavorites] = useState([])
 
   const fetchChars = () => {
     axios.get('https://swapi.dev/api/people')
@@ -19,12 +20,16 @@ function App() {
   fetchChars()
  }, [])
 
+ const addNewFavorite = charObj => {
+  setFavorites([...favorites, charObj])
+ }
+
 // useEffect(fetchChars, [])
 
-//  console.log(chars)
+//  console.log(favorites)
   return (
     <div className="App">
-        <Mapper chars={chars}/>
+        <Mapper chars={chars} addNewFavorite={addNewFavorite}/>
     </div>
   );
 }
