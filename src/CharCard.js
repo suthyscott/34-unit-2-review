@@ -2,7 +2,7 @@ import "./CharCard.css"
 import FilmCard from "./FilmCard"
 import { useState } from "react"
 
-const CharCard = ({ char, addNewFavorite }) => {
+const CharCard = ({ char, addNewFavorite, removeFromFavorites}) => {
     // const {char} = props
     const [films, setFilms] = useState([])
 
@@ -10,7 +10,7 @@ const CharCard = ({ char, addNewFavorite }) => {
         setFilms([...films, filmObj])
     }
 
-    console.log(char.name, films)
+    // console.log(char.name, films)
     return (
         <div className="char-card-container">
             <p>{char.name}</p>
@@ -19,7 +19,11 @@ const CharCard = ({ char, addNewFavorite }) => {
                 {/* {char.films.map(filmUrl => {
                     return <FilmCard filmUrl={filmUrl} addNewFilm={addNewFilm}/>
                 })} */}
-                <button onClick={() => addNewFavorite(char)}>Add to favorites</button>
+                {addNewFavorite ? (
+                    <button onClick={() => addNewFavorite(char)}>Add to favorites</button>
+                ) : (
+                    <button onClick={() => removeFromFavorites(char.name)}>Remove</button>
+                )}
             </div>
         </div>
     )
